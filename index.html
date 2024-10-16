@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalaivalam</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="./customer.html">Customer</a></li>
+          <li><a href="./seller.html">Seller</a></li>
+          <li><a href="./rewards.html">Rewards</a></li>
+          <li><a href="./community-events.html">Community Events</a></li>
+        </ul>
+      </nav>
+           
+  <section id="home">
+   <br>
+   <br><div class="empty" style="height: 100px; width: 200px;"></div>
+<div id="content">
+        <h1 id="textElement" class="text" style="color: #00698f; font-size: 36px; font-weight: bold; text-align: center;">Welcome to Kalaivalam
+          <div class="wave-hand">
+            👋
+          </div>
+        </h1>
+<p  style="color: #666; font-size: 18px; font-weight: normal; text-align: center;">Empowering small sellers and artisans to showcase and sell their unique, handmade products.</p>
+
+        <div class="hero-image">
+          <img src="images/localmarket-hero.jpg" alt="LocalMarket Hero Image">
+        </div>
+        <div class="featured-artisans">
+          <h2>Featured Artisans</h2>
+          <div class="artisans-grid">
+            <div class="artisan">
+              <img src="images/artisan1.jpg" alt="Artisan 1">
+              <h3>Nesavali Weaver</h3>
+              <p>Handwoven textiles from rural India</p>
+            </div>
+            <div class="artisan">
+              <img src="images/artisan2.jpg" alt="Artisan 2">
+              <h3>Potter's Wheel</h3>
+              <p>Handcrafted ceramics from local potters</p>
+            </div>
+            <div class="artisan">
+              <img src="images/artisan3.jpg" alt="Artisan 3">
+              <h3>Kudaivellai Basket Maker</h3>
+              <p>Handwoven baskets from sustainable materials</p>
+            </div>
+          </div>
+        </div>
+       <center> <button>Explore Products</button></center>
+      </section>
+      <script>
+        window.onload = function() {
+            document.getElementById('textElement').classList.add('show');
+        };
+    </script>
+
+
+</div><div style="position: fixed; top: 50px; width: 100%; background-color: #f0f0f0; padding: 10px; border-bottom: 1px solid #ccc; z-index: 1;display: inline; ">
+  <button id="start-btn">Start Voice Search</button>
+  <p id="status"></p>
+  <script>
+    const startBtn = document.getElementById('start-btn');
+    const status = document.getElementById('status');
+    const content = document.getElementById('content');
+
+    // Function to highlight text in the content
+    function highlightText(searchTerm) {
+        const regex = new RegExp(searchTerm, 'gi');
+        content.innerHTML = content.innerHTML.replace(/<mark class="highlight">(.*?)<\/mark>/g, '$1'); // Remove previous highlights
+        content.innerHTML = content.innerHTML.replace(regex, '<mark class="highlight">$&</mark>'); // Highlight new search
+    }
+
+    // Check if the browser supports the Web Speech API
+    if ('webkitSpeechRecognition' in window) {
+        const recognition = new webkitSpeechRecognition();
+        recognition.lang = 'en-US'; // Set language
+        recognition.interimResults = false;
+        recognition.continuous = false;
+
+        recognition.onstart = function() {
+            status.textContent = "Listening...";
+        };
+
+        recognition.onresult = function(event) {
+            const transcript = event.results[0][0].transcript;
+            status.textContent = "You said: " + transcript;
+            highlightText(transcript);  // Highlight the spoken word in the content
+        };
+
+        recognition.onerror = function(event) {
+            status.textContent = "Error occurred in recognition: " + event.error;
+        };
+
+        recognition.onend = function() {
+            status.textContent = "Recognition ended.";
+        };
+
+        startBtn.addEventListener('click', function() {
+            recognition.start();
+        });
+    } else {
+        startBtn.disabled = true;
+        status.textContent = "Web Speech API is not supported in this browser.";
+    }
+  </script>
+<div id="google_translate_element" style="float: right;"></div>
+
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+            {pageLanguage: 'en'},
+            'google_translate_element'
+        );
+    }
+</script>
+
+<script type="text/javascript" 
+        src=
+"https://translate.google.com/translate_a/element.js?
+cb=googleTranslateElementInit">
+</script>
+</div>
+
+  
+ 
+<div class="chatbot">
+  <a href="https://raja-73e279.zapier.app" target="_blank" class="profile-card">
+    <img src="images/a3.jpg" alt="Chatbot Icon" class="profile-image">
+    <p class="profile-name">Chat </p>
+  </a>
+</div>
+
+
+<div class="audio-card">
+  <img src="images/d1.jpg" alt="Audio Icon" class="audio-icon">
+  <p class="audio-text">Listen to our anthem</p>
+  <audio controls autoplay class="audio-player">
+    <source src="./assets/Ulaippin Porkaalam.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+</div>
+
+</div>
+</div>
+<footer >
+  <p>&copy; 2024 Kalaivalam. All rights reserved.</p>
+</footer>
+</body>
+</html>

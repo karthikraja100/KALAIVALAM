@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalaivalam - Customer</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="#">Customer</a></li>
+          <li><a href="./seller.html">Seller</a></li>
+          <li><a href="./rewards.html">Rewards</a></li>
+          <li><a href="./community-events.html">Community Events</a></li>
+        </ul>
+      </nav>
+      <br>
+      
+     <section id="customer">
+  <br><br>
+  <h2 style="color: #00698f; font-size: 24px; font-weight: bold; text-align: center;">Explore Products</h2>
+  <div class="product-grid">
+    <div class="product-card">
+      <img src="./images/product1.jpg" alt="Product 1">
+      <h3>Handmade Soap</h3>
+      <p>Natural ingredients, gentle on skin</p>
+      <button class="view-details">View Details</button>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="./images/product2.jpg" alt="Product 2">
+      <h3>Handwoven Scarf</h3>
+      <p>Soft, cozy, and sustainable </p>
+      <button class="view-details">View Details</button>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="./images/product3.jpg" alt="Product 3">
+      <h3>Ceramic Mug</h3>
+      <p>Unique design, perfect for coffee lovers</p>
+      <button class="view-details">View Details</button>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="./images/product4.jpg" alt="Product 4">
+      <h3>Wooden Jewelry Box</h3>
+      <p>Elegant design, perfect for storing jewelry</p>
+      <button class="view-details">View Details</button>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="./images/product5.jpg" alt="Product 5">
+      <h3>Mud Pottery</h3>
+      <p>Handcrafted from natural mud, perfect for home decor</p>
+      <button class="view-details">View Details</button>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="./images/product6.jpg" alt="Product 6">
+      <h3>Recycled Glass Vase</h3>
+      <p>Eco-friendly, perfect for flowers or decor</p>
+      <button class="view-details">View Details</button>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+  </div>
+
+ <div class="cart-icon">
+  <button class="cart-button">
+    <img src="./images/cart-icon.jpg" alt="Cart Icon">
+    <p>view cart</p>
+    <span class="cart-count">0</span>
+  </button>
+  <div class="cart-popup">
+    <h3>Cart</h3>
+    <ul class="cart-items">
+      <!-- Cart items will be populated here -->
+    </ul>
+    <p class="cart-total">Total: $0</p>
+    <button class="checkout-button">Checkout</button>
+  </div>
+</div>
+
+<script>
+  const cartButton = document.querySelector('.cart-button');
+  const cartPopup = document.querySelector('.cart-popup');
+  const cartItemsList = document.querySelector('.cart-items');
+  const cartCount = document.querySelector('.cart-count');
+  const cartTotal = document.querySelector('.cart-total');
+
+  let cart = [];
+
+  // Add event listener to cart button
+  cartButton.addEventListener('click', () => {
+    cartPopup.classList.toggle('show');
+  });
+
+  // Add event listener to add to cart buttons
+  const addToCartButtons = document.querySelectorAll('.add-to-cart');
+  addToCartButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+      const productCard = e.target.parentNode;
+      const productImage = productCard.querySelector('img').src;
+      const productName = productCard.querySelector('h3').textContent;
+      const productPrice = 10; // Replace with actual price
+
+      // Add product to cart
+      cart.push({ image: productImage, name: productName, price: productPrice });
+
+      // Update cart count and total
+      cartCount.textContent = cart.length;
+      cartTotal.textContent = `Total: $${cart.reduce((total, product) => total + product.price, 0)}`;
+
+      // Populate cart items list
+      const cartItem = document.createElement('li');
+      cartItem.innerHTML = `
+        <img src="${productImage}" alt="${productName}">
+        <p>${productName}</p>
+        <p>$${productPrice}</p>
+      `;
+      cartItemsList.appendChild(cartItem);
+    });
+  });
+</script>
+
+
+</section>
+        <div class="translation">
+      <p>
+        <br><br>
+        Translate this page in
+        your preferred language:
+    </p>
+
+    <div id="google_translate_element"></div>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                {pageLanguage: 'en'},
+                'google_translate_element'
+            );
+        }
+    </script>
+
+    <script type="text/javascript" 
+            src=
+"https://translate.google.com/translate_a/element.js?
+cb=googleTranslateElementInit">
+    </script>
+
+    <p>
+        You can translate the content of this
+        page by selecting a language in the
+        select box.
+    </p>
+  </div>  
+    
+<div class="chatbot">
+  <a href="https://raja-73e279.zapier.app" target="_blank" class="profile-card">
+    <img src="images/a3.jpg" alt="Chatbot Icon" class="profile-image">
+    <p class="profile-name">Chat </p>
+  </a>
+</div>
+
+
+<footer >
+  <p>&copy; 2024 Kalaivalam. All rights reserved.</p>
+</footer>
+</body>
+</html>
